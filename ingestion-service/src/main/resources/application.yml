@@ -1,0 +1,38 @@
+server:
+  port: ${SERVER_PORT:8081}
+
+spring:
+  application:
+    name: ingestion-service
+  kafka:
+    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all
+      retries: 3
+
+app:
+  kafka:
+    topic:
+      rssi-events: rssi-events
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+
+#server:
+#  port: 8081
+#
+#spring:
+#  application:
+#    name: ingestion-service
+#  kafka:
+#    bootstrap-servers: localhost:9092
+#
+#app:
+#  topics:
+#    rssi-events: rssi-events
