@@ -19,7 +19,7 @@ spring:
 
   # PostgreSQL
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/presence_db}
+    url: ${SPRING_DATASOURCE_URL}
     username: ${SPRING_DATASOURCE_USERNAME:presence_user}
     password: ${SPRING_DATASOURCE_PASSWORD:presence_pass}
     hikari:
