@@ -24,3 +24,12 @@ hs_err_pid*
 replay_pid*
 
 structure.txt
+
+# IntelliJ
+.idea/
+
+# Build folders
+target/
+
+# OS
+.DS_Store

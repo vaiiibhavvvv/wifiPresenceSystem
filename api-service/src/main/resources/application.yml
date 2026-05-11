@@ -1,0 +1,63 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: api-service
+
+  # Redis
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST:localhost}
+      port: 6379
+      timeout: 2s
+      lettuce:
+        pool:
+          max-active: 10
+          max-idle: 5
+          min-idle: 2
+
+  # PostgreSQL
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/presence_db}
+    username: ${SPRING_DATASOURCE_USERNAME:presence_user}
+    password: ${SPRING_DATASOURCE_PASSWORD:presence_pass}
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: false
+
+  # Jackson
+  jackson:
+    default-property-inclusion: non_null
+
+app:
+  cors:
+    allowed-origins: "*"
+  websocket:
+    push-interval-ms: 2000    # broadcast presence every 2 seconds
+  history:
+    max-limit: 1000           # max records per history query
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.presence: INFO
+    org.springframework.web.socket: WARN

@@ -65,8 +65,8 @@ services:
       - "5432:5432"
     environment:
       POSTGRES_DB: presence_db
-      POSTGRES_USER: presence_user
-      POSTGRES_PASSWORD: presence_pass
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Vaibhav@21
     volumes:
       - postgres-data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -124,9 +124,9 @@ services:
     environment:
       SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
       SPRING_DATA_REDIS_HOST: redis
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/presence_db
-      SPRING_DATASOURCE_USERNAME: presence_user
-      SPRING_DATASOURCE_PASSWORD: presence_pass
+      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/presence_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: Vaibhav@21
       SERVER_PORT: 8082
     networks:
       - presence-net
@@ -145,9 +145,9 @@ services:
       - "8080:8080"
     environment:
       SPRING_DATA_REDIS_HOST: redis
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/presence_db
-      SPRING_DATASOURCE_USERNAME: presence_user
-      SPRING_DATASOURCE_PASSWORD: presence_pass
+      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/presence_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: Vaibhav@21
       SERVER_PORT: 8080
     networks:
       - presence-net
